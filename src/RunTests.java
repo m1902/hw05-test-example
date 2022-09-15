@@ -5,8 +5,10 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({BodyTest.class, SpaceTest.class, NBodyTest.class})
-public class RunTests {
-    public static void main(String[] args) {
+public class RunTests
+{
+    public static void main(String[] args)
+    {
         JUnitCore r = new JUnitCore();
         r.addListener(new GradedTestListenerJSON());
         r.run(RunTests.class);

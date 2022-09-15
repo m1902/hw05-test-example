@@ -9,23 +9,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
-public class NBodyTest {
+public class NBodyTest
+{
 
     @Parameters
-    public static Object[] data() {
+    public static Object[] data()
+    {
         return new Object[][]
-                {
-                        {0.0, 2500.0, "solarSystem.txt"},
-                        {25000.0, 2500.0, "solarSystem.txt"},
-                        {50000.0, 2500.0, "solarSystem.txt"},
-                        {75000.0, 2500.0, "solarSystem.txt"},
-                        {25000.0, 2500.0, "binaryStars.txt"},
-                        {50000.0, 2500.0, "binaryStars.txt"},
-                        {10.0e4, 2500.0, "binaryStars.txt"},
-                        {25000.0, 2500.0, "uniform8.txt"},
-                        {50000.0, 2500.0, "uniform8.txt"},
-                        {10.0e4, 2500.0, "uniform8.txt"},
-                };
+        {
+            {0.0, 2500.0, "solarSystem.txt"},
+            {25000.0, 2500.0, "solarSystem.txt"},
+            {50000.0, 2500.0, "solarSystem.txt"},
+            {75000.0, 2500.0, "solarSystem.txt"},
+            {25000.0, 2500.0, "binaryStars.txt"},
+            {50000.0, 2500.0, "binaryStars.txt"},
+            {10.0e4, 2500.0, "binaryStars.txt"},
+            {25000.0, 2500.0, "uniform8.txt"},
+            {50000.0, 2500.0, "uniform8.txt"},
+            {10.0e4, 2500.0, "uniform8.txt"},
+        };
     }
 
     public double simulationTime;
@@ -42,7 +44,8 @@ public class NBodyTest {
     }
 
     @Before
-    public void setup(){
+    public void setup()
+    {
         sr = new SpaceRef(fileName);
     }
 
@@ -52,14 +55,16 @@ public class NBodyTest {
     {
         s = new Space(fileName);
 
-        for (double elapsedTime = 0; elapsedTime < simulationTime; elapsedTime += timeStep) {
+        for (double elapsedTime = 0; elapsedTime < simulationTime; elapsedTime += timeStep)
+        {
 
             sr.simulate(timeStep);
             s.simulate(timeStep);
 
             assertEquals(sr.bodies.length, s.bodies.length);
 
-            for (int i = 0; i < sr.bodies.length; i++) {
+            for (int i = 0; i < sr.bodies.length; i++)
+            {
                 assertTrue(sr.bodies[i].equals(s.bodies[i]));
             }
         }
@@ -71,8 +76,8 @@ public class NBodyTest {
     {
         s = new Space(fileName);
 
-        for (double elapsedTime = 0; elapsedTime < simulationTime; elapsedTime += timeStep) {
-
+        for (double elapsedTime = 0; elapsedTime < simulationTime; elapsedTime += timeStep)
+        {
             sr.simulate(timeStep);
             s.simulate(timeStep);
 

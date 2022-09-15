@@ -10,8 +10,8 @@ import org.junit.runners.Parameterized.Parameters;
 import com.gradescope.jh61b.grader.GradedTest;
 
 @RunWith(Parameterized.class)
-public class SpaceTest {
-
+public class SpaceTest
+{
     @Parameters
     public static Object[] data() {
         return new Object[] { "uniform8.txt", "solarSystem.txt", "binaryStars.txt" };
@@ -28,14 +28,15 @@ public class SpaceTest {
     }
 
     @Before
-    public void setup(){
+    public void setup()
+    {
         sr = new SpaceRef(fileName);
     }
 
     @Test(timeout = 1000)
     @GradedTest(name = "Test setRadius", max_score = 0.5)
-    public void testSetRadius() {
-
+    public void testSetRadius()
+    {
         s = new Space(fileName);
 
         assertEquals(s.radius, sr.radius, DELTA);
@@ -43,8 +44,8 @@ public class SpaceTest {
 
     @Test(timeout = 1000)
     @GradedTest(name = "Test setBodies", max_score = 0.5)
-    public void testSetBodies() {
-
+    public void testSetBodies()
+    {
 	    s = new Space(fileName);
 
         assertEquals(sr.bodies.length, s.bodies.length);
